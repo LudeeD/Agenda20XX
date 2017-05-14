@@ -1,0 +1,64 @@
+﻿<Page x:Class="IHC.AX_Login"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:local="clr-namespace:IHC"
+     mc:Ignorable="d"
+     Title="AX_Login"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal" 
+     TextOptions.TextRenderingMode="Auto"        
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}" 
+     d:DesignWidth="1366" 
+     d:DesignHeight="768"
+      >
+
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="1">
+            <materialDesign:PackIcon Margin="0,60,0,0" Kind="AccountCircle" HorizontalAlignment="Center" Height="auto" Width="200"/>
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 20 0 8" >
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Account" />
+                        <TextBlock FontSize="16">Username</TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Key" />
+                        <TextBlock FontSize="16">Password</TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </PasswordBox>
+            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="100" HorizontalAlignment="Center"
+                    ToolTip="Login with provided credentials" Click="Login_Click">
+                Login
+            </Button>
+
+            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="11" Margin="0 20 8 0" Width="auto" HorizontalAlignment="Center">
+                <Hyperlink Click="Password_Click">
+                    Forgot Password
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" FontSize="11" Margin="0 5 8 0" Width="auto" HorizontalAlignment="Center">
+                <Hyperlink Click="Register_Click">
+                    Create Account
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

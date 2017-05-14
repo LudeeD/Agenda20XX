@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IHC
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page2.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class AX_FullView : Page
     {
-        public MainWindow()
+        public AX_FullView()
         {
             InitializeComponent();
         }

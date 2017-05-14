@@ -1,0 +1,70 @@
+﻿<Page x:Class="IHC.AX_Register"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IHC"
+      mc:Ignorable="d" 
+      Title="AX_Register"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal" 
+      TextOptions.TextRenderingMode="Auto"        
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}" 
+      d:DesignWidth="1366" 
+      d:DesignHeight="768">
+
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Email" />
+                        <TextBlock FontSize="16">Email</TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 0 8" >
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Account" />
+                        <TextBlock FontSize="16">Username</TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Key" />
+                        <TextBlock FontSize="16">Password</TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </PasswordBox>
+            <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Key" />
+                        <TextBlock FontSize="16">Confirm Password</TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </PasswordBox>
+            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="Auto" HorizontalAlignment="Center"
+                    ToolTip="Login with provided credentials" Click="Create_Click">
+                Create Account
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
