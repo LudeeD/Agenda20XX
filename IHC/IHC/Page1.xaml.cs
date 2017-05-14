@@ -28,8 +28,8 @@ namespace IHC
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            AX_FullView fullView = new AX_FullView();
-            this.NavigationService.Navigate(fullView);
+            AX_Loading loading = new AX_Loading();
+            this.NavigationService.Navigate(loading);
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
