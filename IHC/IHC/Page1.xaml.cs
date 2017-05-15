@@ -28,8 +28,19 @@ namespace IHC
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            AX_Loading loading = new AX_Loading();
-            this.NavigationService.Navigate(loading);
+            if (String.IsNullOrEmpty(TextBox1.Text))
+            {
+                MessageBox.Show("Insert a username!","Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (String.IsNullOrEmpty(PasswordBox1.Password))
+            {
+                MessageBox.Show("Insert a password!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                AX_Loading loading = new AX_Loading();
+                this.NavigationService.Navigate(loading);
+            }
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)

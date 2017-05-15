@@ -29,7 +29,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
+            <TextBox Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Email" />
@@ -37,7 +37,7 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 0 8" >
+            <TextBox Name="TextBox2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 0 8" >
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Account" />
@@ -45,7 +45,7 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+            <PasswordBox Name="PasswordBox1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Key" />
@@ -53,7 +53,7 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </PasswordBox>
-            <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+            <PasswordBox Name="PasswordBox2" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Key" />
@@ -62,7 +62,7 @@
                 </materialDesign:HintAssist.Hint>
             </PasswordBox>
             <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="Auto" HorizontalAlignment="Center"
-                    ToolTip="Login with provided credentials" Click="Create_Click">
+                    ToolTip="Create account with provided credentials" Click="Create_Click">
                 Create Account
             </Button>
         </StackPanel>

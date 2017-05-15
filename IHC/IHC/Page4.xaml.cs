@@ -27,9 +27,16 @@ namespace IHC
 
         private void Email_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Email sent successfully!");
-            AX_Login login = new AX_Login();
-            this.NavigationService.Navigate(login);
+            if (String.IsNullOrEmpty(TextBox1.Text))
+            {
+                MessageBox.Show("Insert an email!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Email sent successfully!", "Congratulations!", MessageBoxButton.OK, MessageBoxImage.Information);
+                AX_Login login = new AX_Login();
+                this.NavigationService.Navigate(login);
+            }
         }
     }
 }
