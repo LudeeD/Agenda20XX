@@ -29,12 +29,16 @@ namespace IHC
         {
             if (String.IsNullOrEmpty(TextBox1.Text))
             {
-                MessageBox.Show("Insert an email!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Insert a valid email!";
+                this.Snack.IsActive = true;
             }
             else
             {
-                MessageBox.Show("Email sent successfully!", "Congratulations!", MessageBoxButton.OK, MessageBoxImage.Information);
                 AX_Login login = new AX_Login();
+                login.Snack.IsActive = false;
+                login.Snack.Message.Content = "Email sent successfully!";
+                login.Snack.IsActive = true;
                 this.NavigationService.Navigate(login);
             }
         }

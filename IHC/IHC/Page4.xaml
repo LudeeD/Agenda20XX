@@ -24,12 +24,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBox Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
+        <TextBox Grid.Column="1" Grid.Row="1" Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Email" />
@@ -37,10 +37,14 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="Auto" HorizontalAlignment="Center"
+        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="Auto" HorizontalAlignment="Center"
                     ToolTip="Send email with link to reset password" Click="Email_Click">
-                Reset Password
-            </Button>
-        </StackPanel>
+            Reset Password
+        </Button>
+        <materialDesign:Snackbar Message="hello 1" 
+                IsActive="False"
+                x:Name="Snack" 
+                Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"               
+                />
     </Grid>
 </Page>

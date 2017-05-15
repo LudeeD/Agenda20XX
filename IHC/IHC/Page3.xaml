@@ -25,11 +25,15 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBox Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
+        <TextBox Grid.Column="1" Grid.Row="1"
+            Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Email" />
@@ -37,7 +41,8 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <TextBox Name="TextBox2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 10 0 8" >
+        <TextBox Grid.Column="1" Grid.Row="2"
+                Name="TextBox2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8" >
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Account" />
@@ -45,7 +50,8 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-            <PasswordBox Name="PasswordBox1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+        <PasswordBox Grid.Column="1" Grid.Row="3"
+                Name="PasswordBox1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Key" />
@@ -53,7 +59,8 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </PasswordBox>
-            <PasswordBox Name="PasswordBox2" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 10 0 8">
+        <PasswordBox Grid.Column="1" Grid.Row="4"
+                Name="PasswordBox2" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Key" />
@@ -61,10 +68,18 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </PasswordBox>
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="Auto" HorizontalAlignment="Center"
-                    ToolTip="Create account with provided credentials" Click="Create_Click">
-                Create Account
+            <Button Grid.Column="1" Grid.Row="5" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Width="Auto" HorizontalAlignment="Left"
+                    ToolTip="Cancel account creation" Click="Cancel_Click" Margin="140 50 0 0">
+                Cancel
             </Button>
-        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="5" Style="{StaticResource MaterialDesignRaisedAccentButton}"  Width="Auto" HorizontalAlignment="Right"
+                    ToolTip="Create account with provided credentials" Click="Create_Click" Margin="0 50 140 0">
+            Create
+        </Button>
+        <materialDesign:Snackbar Message="hello 1" 
+                IsActive="False"
+                x:Name="Snack" 
+                Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"               
+                />
     </Grid>
 </Page>

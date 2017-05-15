@@ -30,11 +30,15 @@ namespace IHC
         {
             if (String.IsNullOrEmpty(TextBox1.Text))
             {
-                MessageBox.Show("Insert a username!","Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content="Insert a Valid Username";
+                this.Snack.IsActive = true;
             }
             else if (String.IsNullOrEmpty(PasswordBox1.Password))
             {
-                MessageBox.Show("Insert a password!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Insert a Valid Password";
+                this.Snack.IsActive = true;
             }
             else
             {
@@ -53,6 +57,11 @@ namespace IHC
         {
             AX_Password password = new AX_Password();
             this.NavigationService.Navigate(password);
+        }
+
+        private void ok_snack(object sender, RoutedEventArgs e)
+        {
+            this.Snack.IsActive = false;
         }
     }
 }

@@ -72,7 +72,13 @@
                     Create Account
                 </Hyperlink>
             </TextBlock>
-        </StackPanel>
+
             
+        </StackPanel>
+        <materialDesign:Snackbar Message="hello 1" 
+                IsActive="False"
+                x:Name="Snack" 
+                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"               
+                />
     </Grid>
 </Page>

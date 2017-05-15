@@ -29,27 +29,43 @@ namespace IHC
         {
             if (String.IsNullOrEmpty(TextBox1.Text))
             {
-                MessageBox.Show("Insert a valid email!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Insert a valid email!";
+                this.Snack.IsActive = true;
             }
             else if (String.IsNullOrEmpty(TextBox2.Text))
             {
-                MessageBox.Show("Insert a valid username!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Insert a valid username!";
+                this.Snack.IsActive = true;
             }
             else if (String.IsNullOrEmpty(PasswordBox1.Password))
             {
-                MessageBox.Show("Insert a valid password!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Insert a valid password!";
+                this.Snack.IsActive = true;
             }
             else if (String.IsNullOrEmpty(PasswordBox2.Password))
             {
-                MessageBox.Show("Confirm password!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Confirm password!";
+                this.Snack.IsActive = true;
             }
             else
             {
-                MessageBox.Show("Account Created Successfully!", "Congratulations!", MessageBoxButton.OK, MessageBoxImage.Information);
+                
                 AX_Login login = new AX_Login();
+                login.Snack.IsActive = false;
+                login.Snack.Message.Content = "Account Created Successfully!";
+                login.Snack.IsActive = true;
                 this.NavigationService.Navigate(login);
             }
         }
 
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            AX_Login login = new AX_Login();
+            this.NavigationService.Navigate(login);
+        }
     }
 }
