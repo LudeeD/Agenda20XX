@@ -27,9 +27,29 @@ namespace IHC
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Account Created Successfully!");
-            AX_Login login = new AX_Login();
-            this.NavigationService.Navigate(login);
+            if (String.IsNullOrEmpty(TextBox1.Text))
+            {
+                MessageBox.Show("Insert a valid email!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (String.IsNullOrEmpty(TextBox2.Text))
+            {
+                MessageBox.Show("Insert a valid username!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (String.IsNullOrEmpty(PasswordBox1.Password))
+            {
+                MessageBox.Show("Insert a valid password!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (String.IsNullOrEmpty(PasswordBox2.Password))
+            {
+                MessageBox.Show("Confirm password!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Account Created Successfully!", "Congratulations!", MessageBoxButton.OK, MessageBoxImage.Information);
+                AX_Login login = new AX_Login();
+                this.NavigationService.Navigate(login);
+            }
         }
+
     }
 }

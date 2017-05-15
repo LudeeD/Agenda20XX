@@ -36,7 +36,7 @@
                                  HorizontalAlignment="Center" 
                                  Height="150" Width="150"
                                  VerticalAlignment="Center"/>
-        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+        <TextBox x:Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                  Grid.Row="2" Grid.Column="1"
                  Margin="0 20 0 0">
                 <materialDesign:HintAssist.Hint>
@@ -46,7 +46,7 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
         </TextBox>
-        <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+        <PasswordBox x:Name="PasswordBox1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                     Grid.Row="3" Grid.Column="1"
                  Margin="0 20 0 0">
                 <materialDesign:HintAssist.Hint>
