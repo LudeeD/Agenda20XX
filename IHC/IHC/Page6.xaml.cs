@@ -94,5 +94,38 @@ namespace IHC
             AX_Login login = new AX_Login();
             this.NavigationService.Navigate(login);
         }
+
+        private void ToggleButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.hamburguer.IsChecked = false;
+        }
+
+        private void on_Calendar(object sender, RoutedEventArgs e)
+        {
+            this.Calendar.Visibility = Visibility.Visible;
+            this.Schedule.Visibility = Visibility.Collapsed;
+        }
+        private void on_Schedule(object sender, RoutedEventArgs e)
+        {
+            this.Schedule.Visibility = Visibility.Visible;
+            this.Calendar.Visibility = Visibility.Collapsed;
+
+        }
+        private void on_Todo(object sender, RoutedEventArgs e)
+        {
+            this.ToDo.Visibility = Visibility.Visible;
+            this.News.Visibility = Visibility.Collapsed;
+
+        }
+        private void on_News(object sender, RoutedEventArgs e)
+        {
+            this.News.Visibility = Visibility.Visible;
+            this.ToDo.Visibility = Visibility.Collapsed;
+
+        }
+        private void on_Email(object sender, RoutedEventArgs e)
+        {
+            this.Email.Visibility = Visibility.Visible;
+        }
     }
 }
