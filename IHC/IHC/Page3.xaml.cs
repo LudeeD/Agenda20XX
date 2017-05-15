@@ -27,6 +27,8 @@ namespace IHC
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
+            Insert_user.username = TextBox1.Text;
+            Insert_user.email = TextBox2.Text;
             if (String.IsNullOrEmpty(TextBox1.Text))
             {
                 this.Snack.IsActive = false;
@@ -67,5 +69,11 @@ namespace IHC
             AX_Login login = new AX_Login();
             this.NavigationService.Navigate(login);
         }
+    }
+
+    static public class Insert_user
+    {
+        static public String username = "Utilizador1";
+        static public String email = "adminemail@mail.com";
     }
 }

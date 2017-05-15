@@ -1,0 +1,66 @@
+﻿<Page x:Class="IHC.AX_Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IHC"
+      mc:Ignorable="d" 
+      d:DesignWidth="1366" d:DesignHeight="768"
+      Title="AX_Profile"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal" 
+      TextOptions.TextRenderingMode="Auto"        
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="Back_Click" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Back"/>
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+        <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" 
+                                 Margin="0,-250,0,0" Kind="AccountCircle" 
+                                 HorizontalAlignment="Center" 
+                                 Height="150" Width="150"
+                                 VerticalAlignment="Center"/>
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="50,100,0,0">
+            <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Account" />
+                        <TextBlock FontSize="16">Username:</TextBlock>
+            </StackPanel>
+        </TextBlock>
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="150,100,0,0">
+            <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                <TextBlock Text="{Binding Path=User}"/>
+            </StackPanel>
+        </TextBlock>
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="50,150,0,0">
+            <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <materialDesign:PackIcon Kind="Email" />
+                        <TextBlock FontSize="16">Email:</TextBlock>
+            </StackPanel>
+        </TextBlock>
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="150,150,0,0">
+            <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <TextBlock Text="{Binding Path=Email}"/>
+            </StackPanel>
+        </TextBlock>
+    </Grid>
+</Page>
