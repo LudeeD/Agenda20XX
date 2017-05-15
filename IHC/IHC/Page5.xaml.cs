@@ -24,13 +24,13 @@ namespace IHC
         public AX_Loading()
         {
             InitializeComponent();
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(7) };
+            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
             timer.Start();
             timer.Tick += (sender, args) =>
             {
                 timer.Stop();
-                AX_FullView fullView = new AX_FullView();
-                this.NavigationService.Navigate(fullView);
+                AX_TriView triView = new AX_TriView();
+                this.NavigationService.Navigate(triView);
             };
         }
     }

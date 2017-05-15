@@ -1,0 +1,311 @@
+﻿<Page x:Class="IHC.AX_TriView"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:local="clr-namespace:IHC"
+     mc:Ignorable="d"
+     Title="AX_TriView"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal" 
+     TextOptions.TextRenderingMode="Auto"        
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}" 
+     d:DesignWidth="1366" 
+     d:DesignHeight="768">
+
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
+            <DockPanel>
+                <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
+                    <ListBox>
+                        <ListBoxItem>Hello World</ListBoxItem>
+                        <ListBoxItem>Nice Popup</ListBoxItem>
+                        <ListBoxItem>Goodbye.</ListBoxItem>
+                    </ListBox>
+                </materialDesign:PopupBox>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+
+        <materialDesign:DialogHost Grid.Column="0" Grid.Row="1">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Orientation="Vertical" Margin="5 5 5 5">
+                    <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Name:</TextBlock>
+                    <TextBox Margin="5 5 5 5"></TextBox>
+                    <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Pick a Date:</TextBlock>
+                    <DatePicker DisplayDate="{Binding DateTime.Now}"  Margin="5 5 5 5" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{DynamicResource MaterialDesignRaisedDarkButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancelar</Button>
+                        <Button Style="{DynamicResource MaterialDesignRaisedAccentButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="createEvent">Criar</Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <materialDesign:Card x:Name="Calendar" Padding="5" Margin="10" VerticalAlignment="Stretch" materialDesign:ShadowAssist.ShadowDepth="Depth5" Visibility="Visible">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
+                    Calendar
+                </TextBlock>
+                <ToggleButton x:Name="ToggleCalendar" Click="ToggleButton_ClickCalendar" Grid.Row="0" Style="{DynamicResource MaterialDesignSwitchDarkToggleButton}" Height="auto"  Width="auto" HorizontalAlignment="Right" Margin="10 10 10 10"/>
+
+
+                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+
+                <ListBox Grid.Row="2" VerticalAlignment="Stretch">
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
+                                <TextBlock>16</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                Go to the Dentist
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
+                                <TextBlock>17</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                IHC Test
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
+                                <TextBlock>21</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                Go to the Doctor
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
+                                <TextBlock>12</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                BD Test
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
+                                <TextBlock>1</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card Name="event" Visibility="Collapsed">
+                        <Grid Margin="10 10 10 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
+                                <TextBlock>4</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                Pay tuitions
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
+                                <TextBlock>25</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                Freedom Day
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">July</TextBlock>
+                                <TextBlock>1</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">July</TextBlock>
+                                <TextBlock>5</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                Go to the Dentist
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </ListBox>
+
+                <Button Grid.Row="2" Style="{DynamicResource MaterialDesignFloatingActionButton }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 20"
+                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        >
+                    <materialDesign:PackIcon Kind="Plus" Width="auto" Height="40"/>
+                </Button>
+            </Grid>
+        
+        </materialDesign:Card>
+        </materialDesign:DialogHost>
+
+
+
+
+
+
+
+
+        <materialDesign:Card x:Name="Schedule" Grid.Column="0" Grid.Row="1" Padding="5" Margin="10" VerticalAlignment="Stretch" materialDesign:ShadowAssist.ShadowDepth="Depth5" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
+                    Schedule
+                </TextBlock>
+                <ToggleButton x:Name="ToggleSchedule" Click="ToggleButton_ClickSchedule" Grid.Row="0" Style="{DynamicResource MaterialDesignSwitchDarkToggleButton}" Height="auto"  Width="auto" HorizontalAlignment="Right" Margin="10 10 10 10" IsChecked="True"/>
+                
+                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+
+                <ListBox Grid.Row="2" VerticalAlignment="Stretch">
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">9:00</TextBlock>
+                                <TextBlock>4.2.11</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                BD
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">10:00</TextBlock>
+                                <TextBlock>4.2.11</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                BD
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">11:00</TextBlock>
+                                <TextBlock>4.1.5.11</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                IHC
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card >
+                        <Grid Margin="10 10 10 10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="350"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">12:00</TextBlock>
+                                <TextBlock>4.1.5</TextBlock>
+                            </StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                                IHC
+                            </TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </ListBox>
+            </Grid>
+        </materialDesign:Card>
+        
+        
+    </Grid>
+</Page>
