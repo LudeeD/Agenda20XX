@@ -31,9 +31,16 @@
             <DockPanel>
                 <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
                     <ListBox>
-                        <ListBoxItem>Hello World</ListBoxItem>
-                        <ListBoxItem>Nice Popup</ListBoxItem>
-                        <ListBoxItem>Goodbye.</ListBoxItem>
+                        <ListBoxItem>
+                            <TextBlock MouseLeftButtonDown="Settings_MouseLeftButtonDown">
+                                Settings
+                            </TextBlock>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <TextBlock MouseLeftButtonDown="Logout_MouseLeftButtonDown">
+                                Logout
+                            </TextBlock>
+                        </ListBoxItem>
                     </ListBox>
                 </materialDesign:PopupBox>
                 <StackPanel Orientation="Horizontal">

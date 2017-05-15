@@ -83,5 +83,16 @@ namespace IHC
         {
             this.Snack.IsActive = false;
         }
+
+        private void Settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Logout_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AX_Login login = new AX_Login();
+            this.NavigationService.Navigate(login);
+        }
     }
 }
