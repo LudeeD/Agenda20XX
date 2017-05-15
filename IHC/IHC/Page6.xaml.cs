@@ -39,9 +39,49 @@ namespace IHC
             this.ToggleCalendar.IsChecked = false;
         }
 
+        private void ToggleButton_ClickTodo(object sender, RoutedEventArgs e)
+        {
+            this.ToDo.Visibility = Visibility.Collapsed;
+            this.News.Visibility = Visibility.Visible;
+            this.ToggleTodo.IsChecked = true;
+        }
+
+        private void ToggleButton_ClickNews(object sender, RoutedEventArgs e)
+        {
+            this.News.Visibility = Visibility.Collapsed;
+            this.ToDo.Visibility = Visibility.Visible;
+            this.ToggleNews.IsChecked = false;
+        }
+
+
+
         private void createEvent(object sender, RoutedEventArgs e)
         {
             this.@event.Visibility = Visibility.Visible;
+            successAction(sender, e);
+
+        }
+
+        private void createTodo(object sender, RoutedEventArgs e)
+        {
+            this.TodoCard.Visibility = Visibility.Visible;
+            successAction(sender, e);
+        }
+
+        private void successAction(object sender, RoutedEventArgs e)
+        {
+            this.ToEmail.Text = "";
+            this.ccEmail.Text = "";
+            this.AssuntoEmail.Text = "";
+            this.MailEmail.Text = "";
+            this.Snack.IsActive = false;
+            this.Snack.Message.Content = "Action succeeded";
+            this.Snack.IsActive = true;
+        }
+
+        private void Snack_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Snack.IsActive = false;
         }
     }
 }

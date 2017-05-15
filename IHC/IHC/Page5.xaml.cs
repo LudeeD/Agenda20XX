@@ -24,7 +24,7 @@ namespace IHC
         public AX_Loading()
         {
             InitializeComponent();
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
+            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(3) };
             timer.Start();
             timer.Tick += (sender, args) =>
             {
