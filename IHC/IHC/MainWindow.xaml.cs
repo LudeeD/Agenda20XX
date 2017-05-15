@@ -23,6 +23,7 @@ namespace IHC
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
     }
 }

@@ -86,7 +86,6 @@ namespace IHC
 
         private void Settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
         }
 
         private void Logout_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
