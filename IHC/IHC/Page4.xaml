@@ -37,7 +37,11 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 20 8 0" Width="Auto" HorizontalAlignment="Center"
+        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="-220 20 8 0" Width="Auto" HorizontalAlignment="Center"
+                    ToolTip="Cancel password's reset" Click="Email_Click">
+            Cancel
+        </Button>
+        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="130 20 8 0" Width="Auto" HorizontalAlignment="Center"
                     ToolTip="Send email with link to reset password" Click="Email_Click">
             Reset Password
         </Button>
