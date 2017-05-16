@@ -20,9 +20,12 @@ namespace IHC
     /// </summary>
     public partial class AX_TriView : Page
     {
+        private string _to_do;
+        private string _evento;
         public AX_TriView()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         private void ToggleButton_ClickSchedule(object sender, RoutedEventArgs e)
@@ -58,14 +61,27 @@ namespace IHC
         private void createEvent(object sender, RoutedEventArgs e)
         {
             this.@event.Visibility = Visibility.Visible;
+            _evento = TextBox2.Text;
             successAction(sender, e);
+        }
 
+        public string Eventos
+        {
+            get { return _evento; }
+            set { _evento = value; }
         }
 
         private void createTodo(object sender, RoutedEventArgs e)
         {
             this.TodoCard.Visibility = Visibility.Visible;
+            _to_do = TextBox1.Text;
             successAction(sender, e);
+        }
+
+        public string Todo
+        {
+            get { return _to_do; }
+            set { _to_do = value; }
         }
 
         private void successAction(object sender, RoutedEventArgs e)
@@ -86,6 +102,8 @@ namespace IHC
 
         private void Settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            AX_Settings setting = new AX_Settings();
+            this.NavigationService.Navigate(setting);
         }
 
         private void Logout_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -125,6 +143,11 @@ namespace IHC
         private void on_Email(object sender, RoutedEventArgs e)
         {
             this.Email.Visibility = Visibility.Visible;
+        }
+        private void on_Profile(object sender, RoutedEventArgs e)
+        {
+            AX_Profile profile = new AX_Profile();
+            this.NavigationService.Navigate(profile);
         }
     }
 }

@@ -56,6 +56,13 @@
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Email
                 </Button>
+                <Button Click="on_Profile"
+                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Left}"
+                        Margin="4" HorizontalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                    Profile
+                </Button>
                 
                 
             </StackPanel>
@@ -99,8 +106,8 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Orientation="Vertical" Margin="5 5 5 5">
                     <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Name:</TextBlock>
-                    <TextBox Margin="5 5 5 5"></TextBox>
-                    <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Pick a Date:</TextBlock>
+                        <TextBox Name="TextBox2" Margin="5 5 5 5"/>
+                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Pick a Date:</TextBlock>
                     <DatePicker DisplayDate="{Binding DateTime.Now}"  Margin="5 5 5 5" />
                     <StackPanel Orientation="Horizontal">
                         <Button Style="{DynamicResource MaterialDesignRaisedDarkButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancelar</Button>
@@ -209,10 +216,10 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                 <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
                                 <TextBlock>4</TextBlock>
                             </StackPanel>
-                            <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                Pay tuitions
-                            </TextBlock>
-                        </Grid>
+                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Eventos}">
+                                        Meet with the Boss
+                                    </TextBlock>
+                                </Grid>
                     </materialDesign:Card>
                     <materialDesign:Card >
                         <Grid Margin="10 10 10 10" >
@@ -364,8 +371,8 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Orientation="Vertical" Margin="5 5 5 5">
                     <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Name:</TextBlock>
-                    <TextBox Margin="5 5 5 5"></TextBox>
-                    <StackPanel Orientation="Horizontal">
+                        <TextBox Name="TextBox1" Margin="5 5 5 5"/>
+                        <StackPanel Orientation="Horizontal">
                         <Button Style="{DynamicResource MaterialDesignRaisedDarkButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancelar</Button>
                         <Button Style="{DynamicResource MaterialDesignRaisedAccentButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="createTodo">Create</Button>
                     </StackPanel>
@@ -424,10 +431,10 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                 <StackPanel Grid.Column="0">
                                     <CheckBox/>
                                 </StackPanel>
-                                <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                Buy Food
-                                </TextBlock>
-                            </Grid>
+                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Todo}">
+                                        Buy Cat's Food
+                                    </TextBlock>
+                                </Grid>
                         </materialDesign:Card>
                     </ListBox>
 

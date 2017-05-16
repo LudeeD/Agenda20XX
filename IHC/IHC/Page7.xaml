@@ -30,7 +30,7 @@
         <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
             <DockPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Click="Back_Click" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Back"/>
+                    <Button Click="Back_Click" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Back"/>
                     <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
                 </StackPanel>
             </DockPanel>
@@ -48,7 +48,7 @@
         </TextBlock>
         <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="150,100,0,0">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
-                <TextBlock Text="{Binding Path=User}"/>
+                <TextBlock FontSize="16" Text="{Binding Path=User}"/>
             </StackPanel>
         </TextBlock>
         <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="50,150,0,0">
@@ -59,7 +59,7 @@
         </TextBlock>
         <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="150,150,0,0">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
-                        <TextBlock Text="{Binding Path=Email}"/>
+                        <TextBlock FontSize="16"  Text="{Binding Path=Email}"/>
             </StackPanel>
         </TextBlock>
     </Grid>
