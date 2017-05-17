@@ -38,7 +38,7 @@
                 </materialDesign:HintAssist.Hint>
             </TextBox>
         <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="-220 20 8 0" Width="Auto" HorizontalAlignment="Center"
-                    ToolTip="Cancel password's reset" Click="Email_Click">
+                    ToolTip="Cancel password's reset" Click="Cancel_Click">
             Cancel
         </Button>
         <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="130 20 8 0" Width="Auto" HorizontalAlignment="Center"

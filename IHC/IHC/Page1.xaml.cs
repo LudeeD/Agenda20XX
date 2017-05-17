@@ -40,6 +40,18 @@ namespace IHC
                 this.Snack.Message.Content = "Insert a Valid Password";
                 this.Snack.IsActive = true;
             }
+            else if (!Local_db.user_exists(TextBox1.Text))
+            {
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Invalid Username!";
+                this.Snack.IsActive = true;
+            }
+            else if (!Local_db.check_pass(TextBox1.Text, PasswordBox1.Password.ToString()))
+            {
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Invalid Password!";
+                this.Snack.IsActive = true;
+            }
             else
             {
                 AX_Loading loading = new AX_Loading();
@@ -64,4 +76,52 @@ namespace IHC
             this.Snack.IsActive = false;
         }
     }
+
+    static public class Local_db
+    {
+        static public List<string> db_user = new List<string>();
+        static public List<string> db_pass = new List<string>();
+
+        static public void add_db(string user,string pass)
+        {
+            db_user.Add(user);
+            db_pass.Add(pass);
+        }
+
+        static public bool user_exists(string user)
+        {
+            for (int i = 0; i < db_user.Count(); i++)
+            {
+                if (db_user[i] == user)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static public bool check_pass(string user,string pass)
+        {
+            int num = -1;
+            for (int i = 0; i < db_user.Count(); i++)
+            {
+                if (db_user[i] == user)
+                {
+                    num = i;
+                }
+            }
+
+            if (num == -1)
+            {
+                return false;
+            }
+
+            if (db_pass[num] == pass)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
 }

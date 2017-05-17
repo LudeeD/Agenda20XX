@@ -42,5 +42,11 @@ namespace IHC
                 this.NavigationService.Navigate(login);
             }
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            AX_Login login = new AX_Login();
+            this.NavigationService.Navigate(login);
+        }
     }
 }
