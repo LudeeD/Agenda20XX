@@ -81,11 +81,13 @@ namespace IHC
     {
         static public List<string> db_user = new List<string>();
         static public List<string> db_pass = new List<string>();
+        static public List<string> db_email = new List<string>();
 
-        static public void add_db(string user,string pass)
+        static public void add_db(string user,string pass,string email)
         {
             db_user.Add(user);
             db_pass.Add(pass);
+            db_email.Add(email);
         }
 
         static public bool user_exists(string user)

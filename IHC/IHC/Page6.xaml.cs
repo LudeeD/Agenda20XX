@@ -100,7 +100,7 @@ namespace IHC
             this.Snack.IsActive = false;
         }
 
-        private void Logout_Click(object sender, MouseButtonEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
             AX_Login login = new AX_Login();
             this.NavigationService.Navigate(login);

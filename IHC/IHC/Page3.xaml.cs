@@ -71,7 +71,7 @@ namespace IHC
             }
             else
             {
-                Local_db.add_db(Insert_user.username, Insert_user.password);
+                Local_db.add_db(Insert_user.username, Insert_user.password, Insert_user.email);
                 AX_Login login = new AX_Login();
                 login.Snack.IsActive = false;
                 login.Snack.Message.Content = "Account Created Successfully!";

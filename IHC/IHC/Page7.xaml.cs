@@ -48,5 +48,11 @@ namespace IHC
             }
             set { email = value; }
         }
+
+        private void Logout_Click(object e, RoutedEventArgs sender)
+        {
+            AX_Login login = new AX_Login();
+            this.NavigationService.Navigate(login);
+        }
     }
 }

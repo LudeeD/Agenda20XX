@@ -30,5 +30,42 @@ namespace IHC
             AX_TriView view = new AX_TriView();
             this.NavigationService.Navigate(view);
         }
+
+        private void Change_Email(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < Local_db.db_email.Count; i++)
+            {
+                if (Local_db.db_email[i] == TextBox1.Text)
+                {
+                    Local_db.db_email[i] = TextBox1.Text;
+                    break;
+                }
+            }
+            
+        }
+
+        private void Change_Name(object sender, RoutedEventArgs e)
+        {
+            for (int i=0; i < Local_db.db_user.Count; i++)
+            {
+                if (Local_db.db_user[i] == TextBox2.Text)
+                {
+                    Local_db.db_user[i] = TextBox2.Text;
+                    break;
+                }
+            }
+        }
+
+        private void Change_Password(object sender, RoutedEventArgs e)
+        {
+            for (int i=0; i < Local_db.db_pass.Count; i++)
+            {
+                if(Local_db.db_pass[i] == TextBox3.Text)
+                {
+                    Local_db.db_pass[i] = TextBox3.Text;
+                    break;
+                }
+            }
+        }
     }
 }
