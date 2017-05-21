@@ -97,21 +97,12 @@
             </Grid.RowDefinitions>
             <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
                 <DockPanel>
-                    <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
-                        <ListBox>
-                            <ListBoxItem>
-                                <TextBlock MouseLeftButtonDown="Settings_MouseLeftButtonDown">
-                                Settings
-                                </TextBlock>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <TextBlock MouseLeftButtonDown="Logout_MouseLeftButtonDown">
-                                Logout
-                                </TextBlock>
-                            </ListBoxItem>
-                        </ListBox>
-                    </materialDesign:PopupBox>
-
+                    <Button Click="on_Settings" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Margin="0 0 0 0" Width="32" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Settings" Height="24" Width="24"/>
+                    </Button>
+                    <Button Click="on_Profile" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Margin="0 0 0 0" Width="32" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Account" Height="24" Width="24"/>
+                    </Button>
                     <StackPanel Orientation="Horizontal">
                         <ToggleButton Name="hamburguer" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
 CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>

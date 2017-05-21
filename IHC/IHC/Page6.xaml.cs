@@ -237,10 +237,10 @@ namespace IHC
         }
 
 
-        //private void on_Settings(object sender, RoutedEventArgs e)
-        //{
-        //    AX_Settings settings = new AX_Settings();
-        //    this.NavigationService.Navigate(settings);
-        //}
+        private void on_Settings(object sender, RoutedEventArgs e)
+        {
+            AX_Settings settings = new AX_Settings();
+            this.NavigationService.Navigate(settings);
+        }
     }
 }
