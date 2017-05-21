@@ -135,13 +135,7 @@ namespace IHC
             this.Snack.IsActive = false;
         }
 
-        private void Settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            AX_Settings setting = new AX_Settings();
-            this.NavigationService.Navigate(setting);
-        }
-
-        private void Logout_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
             AX_Login login = new AX_Login();
             this.NavigationService.Navigate(login);
@@ -184,7 +178,6 @@ namespace IHC
             AX_Profile profile = new AX_Profile();
             this.NavigationService.Navigate(profile);
         }
-
 
         public ObservableCollection<Todo> ListaToDos { get { return _TodoList; } }
 
@@ -241,7 +234,13 @@ namespace IHC
             scheduleListBoxWed.Visibility = Visibility.Collapsed;
             scheduleListBoxThu.Visibility = Visibility.Collapsed;
             scheduleListBoxFri.Visibility = Visibility.Visible;
-
         }
+
+
+        //private void on_Settings(object sender, RoutedEventArgs e)
+        //{
+        //    AX_Settings settings = new AX_Settings();
+        //    this.NavigationService.Navigate(settings);
+        //}
     }
 }

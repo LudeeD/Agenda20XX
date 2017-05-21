@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,7 +28,15 @@ namespace IHC
 
         private void Email_Click(object sender, RoutedEventArgs e)
         {
+            Regex sc = new Regex("@");
+
             if (String.IsNullOrEmpty(TextBox1.Text))
+            {
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Insert a valid email!";
+                this.Snack.IsActive = true;
+            }
+            else if (!sc.IsMatch(TextBox1.Text))
             {
                 this.Snack.IsActive = false;
                 this.Snack.Message.Content = "Insert a valid email!";
@@ -41,6 +50,12 @@ namespace IHC
                 login.Snack.IsActive = true;
                 this.NavigationService.Navigate(login);
             }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            AX_Login login = new AX_Login();
+            this.NavigationService.Navigate(login);
         }
     }
 }

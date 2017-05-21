@@ -55,20 +55,37 @@
                         CommandParameter="{x:Static Dock.Left}"
                         Margin="4" HorizontalAlignment="Center"
                         Style="{DynamicResource MaterialDesignFlatButton}">
-                    Email
+                    Inbox
                 </Button>
                 <Button Click="on_Profile"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
                         Margin="4" HorizontalAlignment="Center"
                         Style="{DynamicResource MaterialDesignFlatButton}">
-                    Profile
+                    Account
+                </Button>
+                <Button Click="on_Settings"
+                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Left}"
+                        Margin="4" HorizontalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                    Settings
+                </Button>
+                <Button Click="Logout_Click"
+                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Left}"
+                        Margin="4" HorizontalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignFlatButton}">
+                    Logout
                 </Button>
 
 
             </StackPanel>
         </materialDesign:DrawerHost.LeftDrawerContent>
         <Grid Margin="0,0,0,0">
+
+            
+            <!--TODO Change-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -94,6 +111,7 @@
                             </ListBoxItem>
                         </ListBox>
                     </materialDesign:PopupBox>
+
                     <StackPanel Orientation="Horizontal">
                         <ToggleButton Name="hamburguer" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
 CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
@@ -737,23 +755,31 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         </Grid.RowDefinitions>
                         <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
                     Inbox
+
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center" Margin="270 0 0 0" Grid.Row="0">
+                         Unread:
+                    </TextBlock>
+                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center" Margin="350 0 0 0" Grid.Row="0">
+                            2
                         </TextBlock>
+ 
 
+                    <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
-                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                    <ListBox Grid.Row="2" VerticalAlignment="Stretch">
+                        <materialDesign:Card Background="LightGray">
+                            <Grid Margin="10 10 10 10" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="400"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Style="{DynamicResource MaterialDesignTitleTextBlock }" Grid.Column="1" TextWrapping="Wrap">
 
-                        <ListBox Grid.Row="2" VerticalAlignment="Stretch">
-                            <materialDesign:Card Background="LightGray">
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="400"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Style="{DynamicResource MaterialDesignTitleTextBlock }" Grid.Column="1" TextWrapping="Wrap">
                                     DETI Secretary
                                     </TextBlock>
                                     <TextBlock Grid.Row="1" Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
