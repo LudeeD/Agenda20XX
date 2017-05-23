@@ -19,13 +19,16 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
             <DockPanel>
@@ -36,33 +39,33 @@
             </DockPanel>
         </materialDesign:ColorZone>
         <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" 
-                                 Margin="0,-250,0,0" Kind="AccountCircle" 
+                                 Margin="0,-0,0,0" Kind="AccountCircle" 
                                  HorizontalAlignment="Center" 
                                  Height="150" Width="150"
                                  VerticalAlignment="Center"/>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="120,100,0,0">
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Account" />
                         <TextBlock FontSize="16">Username:</TextBlock>
             </StackPanel>
         </TextBlock>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="220,100,0,0">
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                 <TextBlock FontSize="16" Text="{Binding Path=User}"/>
             </StackPanel>
         </TextBlock>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="120,150,0,0">
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Email" />
                         <TextBlock FontSize="16">Email:</TextBlock>
             </StackPanel>
         </TextBlock>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="220,150,0,0">
+        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <TextBlock FontSize="16"  Text="{Binding Path=Email}"/>
             </StackPanel>
         </TextBlock>
-        <Button Click="Logout_Click" Margin="0,0,0,20" Style="{StaticResource MaterialDesignRaisedAccentButton}" Grid.Row="1" Grid.Column="1" Width="100" VerticalAlignment="Bottom">
+        <Button Click="Logout_Click" Margin="0,0,0,20" Style="{StaticResource MaterialDesignRaisedAccentButton}" Grid.Row="4" Grid.Column="1" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center">
             Logout
         </Button>
     </Grid>

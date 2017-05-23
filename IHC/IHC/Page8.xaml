@@ -22,8 +22,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryDark"  Padding="16" Height="64">
             <DockPanel>
