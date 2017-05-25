@@ -20,61 +20,61 @@
 
     <materialDesign:DrawerHost>
         <materialDesign:DrawerHost.LeftDrawerContent>
-            <StackPanel Margin="16" Width="169">
+            <StackPanel Margin="16" Width="169" >
                 <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" Margin="4" HorizontalAlignment="Center">Menu</TextBlock>
                 <Button Click="on_Calendar"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Calendar
                 </Button>
                 <Button Click="on_Schedule"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Schedule
                 </Button>
                 <Button Click="on_News"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     News and Weather
                 </Button>
                 <Button Click="on_Todo"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     To Do
                 </Button>
                 <Button Click="on_Email"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Inbox
                 </Button>
                 <Button Click="on_Profile"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Account
                 </Button>
                 <Button Click="on_Settings"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Settings
                 </Button>
                 <Button Click="Logout_Click"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center"
+                        Margin="4" HorizontalAlignment="Center" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Logout
                 </Button>
@@ -100,12 +100,12 @@
                     <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
                         <ListBox>
                             <ListBoxItem>
-                                <TextBlock MouseLeftButtonDown="Settings_MouseLeftButtonDown">
+                                <TextBlock >
                                 Settings
                                 </TextBlock>
                             </ListBoxItem>
                             <ListBoxItem>
-                                <TextBlock MouseLeftButtonDown="Logout_MouseLeftButtonDown">
+                                <TextBlock>
                                 Logout
                                 </TextBlock>
                             </ListBoxItem>
