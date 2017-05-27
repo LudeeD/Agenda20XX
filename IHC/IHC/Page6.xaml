@@ -129,7 +129,7 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         <TextBlock Grid.ColumnSpan="2" Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="0 10 0 0">Name:</TextBlock>
                         <TextBox Name="EventText" Margin="0 10 0 0" Grid.ColumnSpan="2" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True"/>
                         <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="0 10 0 0">Pick a Date:</TextBlock>
-                        <DatePicker Grid.Row="3" Grid.ColumnSpan="2" DisplayDate="{Binding DateTime.Now}" Focusable="False" Margin="0 10 0 0" />
+                        <DatePicker  Name="EventDate" Grid.Row="3" Grid.ColumnSpan="2" DisplayDate="{Binding DateTime.Now}" Focusable="False" Margin="0 10 0 0" />
 
                         <Button Margin="0 20 0 0" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" 
                             Style="{DynamicResource MaterialDesignRaisedDarkButton }" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancel</Button>
@@ -156,163 +156,29 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         </Button>
 
                         <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                        <ListBox SelectionChanged="newsListBox_SelectionChanged" Grid.Row="2" Name="CalendarListBox" HorizontalContentAlignment="Stretch">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
 
-                        <ListBox Name="CalendarForm" Padding="10" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"
-                             Style="{StaticResource MaterialDesignToolToggleListBox}" SelectedIndex="3">
-                            <ListBox.ToolTip>
-                                <TextBlock Text="Choose" />
-                            </ListBox.ToolTip>
-                            <ListBoxItem MouseLeftButtonUp="dayClick" Width="69" HorizontalAlignment="Center">
-                                <TextBlock>Day</TextBlock>
-                            </ListBoxItem>
-                            <ListBoxItem MouseLeftButtonUp="weekClick" Width="69" HorizontalAlignment="Center">
-                                <TextBlock>Week</TextBlock>
-                            </ListBoxItem>
-                            <ListBoxItem MouseLeftButtonUp="monthClick" Width="69" HorizontalAlignment="Center">
-                                <TextBlock>Month</TextBlock>
-                            </ListBoxItem>
-                            <ListBoxItem MouseLeftButtonUp="allClick" Width="69" HorizontalAlignment="Center">
-                                <TextBlock>All</TextBlock>
-                            </ListBoxItem>
+                                    <materialDesign:Card>
+                                        <Grid Margin="10 10 10 10" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text ="{Binding Path=Month}" Style="{DynamicResource MaterialDesignBody2TextBlock }"/>
+                                                <TextBlock Text ="{Binding Path=Day}" />
+                                            </StackPanel>
+                                            <TextBlock Text ="{Binding Path=Desc}" Padding="10"  Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" MaxWidth="{Binding ActualWidth, ElementName=parentElementName}" TextWrapping="Wrap">
+                                            </TextBlock>
+                                        </Grid>
+                                    </materialDesign:Card>
+
+
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
-                        <ListBox Grid.Row="3" VerticalAlignment="Stretch">
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
-                                        <TextBlock>16</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                Go to the Dentist
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
-                                        <TextBlock>17</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                IHC Test
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
-                                        <TextBlock>21</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                Go to the Doctor
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">May</TextBlock>
-                                        <TextBlock>12</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                BD Test
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
-                                        <TextBlock>1</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card Name="event" Visibility="Collapsed">
-                                <Grid Margin="10 10 10 10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
-                                        <TextBlock>4</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Eventos}">
-                                        Meet with the Boss
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">June</TextBlock>
-                                        <TextBlock>25</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                Freedom Day
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">July</TextBlock>
-                                        <TextBlock>1</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }">July</TextBlock>
-                                        <TextBlock>5</TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                Go to the Dentist
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                        </ListBox>
-
                         <Button Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionDarkButton }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 16 20"
                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                         >
@@ -608,7 +474,7 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         <TextBlock Name="CityText" Grid.ColumnSpan="2" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignDisplay1TextBlock}" VerticalAlignment="Stretch">Unknow</TextBlock>
                         <!--<materialDesign:PackIcon Grid.Row="1" Kind="WeatherCloudy" Height="80" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
                         <Image Grid.Row="1" Source="http://cdn.apixu.com/weather/64x64/day/116.png" x:Name="imageWeather" VerticalAlignment="Center" HorizontalAlignment="Center" Width="130" Height="130"/>
-                        
+
                         <ListBox  Grid.Row="1" Grid.Column="1">
                             <TextBlock Name="TempText" TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Temperature : Unknow</TextBlock>
                             <TextBlock Name="PrecText" TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Precipitation : Unknow</TextBlock>
@@ -636,75 +502,8 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        
-                        <!--<ListBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch">
-                            <materialDesign:Card >
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image  Source="http://cdn.apixu.com/weather/64x64/day/116.png" x:Name="imaher" VerticalAlignment="Center" HorizontalAlignment="Center" Width="130" Height="130"/>
-
-                                    <TextBlock Padding="10"  Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" MaxWidth="{Binding ActualWidth, ElementName=parentElementName}" TextWrapping="Wrap">
-                                    India's monsoodasdasdwadwadawdaawdawawawdawdawawdawdadawdawdawd
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <materialDesign:PackIcon Grid.Row="1" Kind="Newspaper" Height="40" Width="Auto" HorizontalAlignment="left" VerticalAlignment="Center"/>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                    Orange weather warning for seven Portugues districts
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <materialDesign:PackIcon Grid.Row="1" Kind="Newspaper" Height="40" Width="Auto" HorizontalAlignment="left" VerticalAlignment="Center"/>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                    Mexico: Secret tunnel found in Reynosa prison
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <materialDesign:PackIcon Grid.Row="1" Kind="Newspaper" Height="40" Width="Auto" HorizontalAlignment="left" VerticalAlignment="Center"/>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                    Ransomware cyber-attack threat escalating - Europol
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                            <materialDesign:Card >
-                                <Grid Margin="10 10 10 0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="350"/>
-                                    </Grid.ColumnDefinitions>
-                                    <materialDesign:PackIcon Grid.Row="1" Kind="Newspaper" Height="40" Width="Auto" HorizontalAlignment="left" VerticalAlignment="Center"/>
-                                    <TextBlock Style="{DynamicResource MaterialDesignSubheadingTextBlock }" Grid.Column="1" TextWrapping="Wrap">
-                                    Mafia controlled Italy migrant centre, say police
-                                    </TextBlock>
-                                </Grid>
-                            </materialDesign:Card>
-                        </ListBox>-->
-
                     </Grid>
-
                 </Grid>
-
             </materialDesign:Card>
 
 

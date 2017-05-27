@@ -38,6 +38,8 @@ namespace IHC
 
         private ObservableCollection<News> _topNews = new ObservableCollection<IHC.News>();
 
+        private ObservableCollection<Event> calendar = new ObservableCollection<Event>();
+
         
 
         private string key = "95e3f8d41eae46909ce232325172505";
@@ -52,6 +54,8 @@ namespace IHC
             seedTodos();
             seedSchedule();
 
+            seedCalendar();
+
             todosListBox.ItemsSource = ListaToDos;
             scheduleListBoxMon.ItemsSource = _Schedule_Mon;
             scheduleListBoxThu.ItemsSource = _Schedule_Thu;
@@ -59,6 +63,8 @@ namespace IHC
             scheduleListBoxTue.ItemsSource = _Schedule_Tue;
             scheduleListBoxFri.ItemsSource = _Schedule_Fri;
             newsListBox.ItemsSource = _topNews;
+
+            CalendarListBox.ItemsSource = calendar;
 
             DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -69,6 +75,24 @@ namespace IHC
 
             fetchWeather();
             fetchNews();
+        }
+
+        private void seedCalendar()
+        {
+            calendar.Add(new Event(new DateTime(2017,6,23), "Go to The Dentist"));
+            calendar.Add(new Event(new DateTime(2017,7,21), "Deliver Project"));
+            calendar.Add(new Event(new DateTime(2017,8,3), "Go to the Doctor"));
+            calendar.Add(new Event(new DateTime(2017,8,4), "Meating with the boss"));
+            calendar.Add(new Event(new DateTime(2017,8,21), "Go see Mom"));
+            calendar.Add(new Event(new DateTime(2017,9,11), "Exam IHC"));
+            calendar.Add(new Event(new DateTime(2017,10,7), "Exam BD"));
+            calendar.Add(new Event(new DateTime(2017,10,3), "Last Day to Finish Project"));
+            calendar.Add(new Event(new DateTime(2017,12, 19), "Birthday"));
+            calendar.Add(new Event(new DateTime(2017,12,25), "Christmas"));
+
+            //calendar = new ObservableCollection<Event> (calendar.OrderBy(calendar => calendar));
+
+
         }
 
         public void fetchNews()
@@ -203,9 +227,23 @@ namespace IHC
 
         private void addEvent(object sender, RoutedEventArgs e)
         {
-            this.@event.Visibility = Visibility.Visible;
-            //_evento = TextBox2.Text;
-            successAction(sender, e);
+            //this.@event.Visibility = Visibility.Visible;
+            ////_evento = TextBox2.Text;
+            //successAction(sender, e);
+            try
+            {
+                calendar.Add(new Event((DateTime)EventDate.SelectedDate, EventText.Text));
+                calendar = new ObservableCollection<Event>(calendar.OrderBy(calendar => calendar));
+
+                CalendarListBox.InvalidateArrange();
+                CalendarListBox.ItemsSource = calendar;
+                CalendarListBox.UpdateLayout();
+            }
+            catch (Exception)
+            {
+             
+            }
+            
         }
 
         public string Eventos
@@ -388,12 +426,6 @@ namespace IHC
         private void allClick(object sender, MouseButtonEventArgs e)
         {
             throw new NotImplementedException();
-        }
-
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
         }
 
         private void newsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
