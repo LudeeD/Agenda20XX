@@ -68,6 +68,7 @@
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             <!--<materialDesign:PackIcon Kind="Flag" Width="20" Height="auto" Margin="0 10 0 10"/>-->
                             <TextBlock Grid.Column="1" Style="{DynamicResource MaterialDesignBody1TextBlock }" VerticalAlignment="center">Language :</TextBlock>
@@ -85,12 +86,18 @@
                                 <Button Width="69" Margin="10 0 10 0" Click="Button_Click_2" Style="{DynamicResource MaterialDesignRaisedDarkButton}">
                                     Dark
                                 </Button>
-
+                            
                             </StackPanel>
                             <!--<materialDesign:PackIcon Kind="Earth" Grid.Row="2" Width="20" Height="auto" Margin="0 10 0 10"/>-->
                             <TextBlock Grid.Column="1" Grid.Row="2" Style="{DynamicResource MaterialDesignBody2TextBlock }" VerticalAlignment="Center" HorizontalAlignment="Left">Location :</TextBlock>
                             <TextBox Name="cityBox" Grid.Row="2" Grid.Column="2" materialDesign:HintAssist.Hint="City" HorizontalAlignment="Left" VerticalAlignment="center" Width="150"
 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBlock Grid.Column="1" Grid.Row="3" Style="{DynamicResource MaterialDesignBody1TextBlock }" VerticalAlignment="center">News :</TextBlock>
+                            <ComboBox Name="chooseNews" Grid.Row="3" Grid.Column="2" Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="center"  HorizontalAlignment="Left" Width="150">
+                                <ComboBoxItem Content="CNN"/>
+                                <ComboBoxItem Content="Google News"/>
+                                <ComboBoxItem Content="The New Yourk Times"/>
+                            </ComboBox>
                         </Grid>
                     </StackPanel>
                 </Expander>

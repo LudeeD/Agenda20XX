@@ -29,14 +29,21 @@ namespace IHC
         private string _evento;
 
         private ObservableCollection<Todo> _TodoList = new ObservableCollection<Todo>();
+
         private ObservableCollection<Class> _Schedule_Mon = new ObservableCollection<Class>();
         private ObservableCollection<Class> _Schedule_Thu = new ObservableCollection<Class>();
         private ObservableCollection<Class> _Schedule_Wed = new ObservableCollection<Class>();
         private ObservableCollection<Class> _Schedule_Tue = new ObservableCollection<Class>();
         private ObservableCollection<Class> _Schedule_Fri = new ObservableCollection<Class>();
 
+        private ObservableCollection<News> _topNews = new ObservableCollection<IHC.News>();
+
+        
+
         private string key = "95e3f8d41eae46909ce232325172505";
+        private string apiKey = "352daa3b9e104067acb23c49965ceab3";
         private string place = "Aveiro";
+        private string provider = "cnn";
 
 
         public AX_TriView()
@@ -51,6 +58,7 @@ namespace IHC
             scheduleListBoxWed.ItemsSource = _Schedule_Wed;
             scheduleListBoxTue.ItemsSource = _Schedule_Tue;
             scheduleListBoxFri.ItemsSource = _Schedule_Fri;
+            newsListBox.ItemsSource = _topNews;
 
             DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -60,7 +68,7 @@ namespace IHC
             dispatcherTimer.Start();
 
             fetchWeather();
-            //fetchNews();
+            fetchNews();
         }
 
         public void fetchNews()
@@ -68,6 +76,30 @@ namespace IHC
             try
             {
                 //https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=352daa3b9e104067acb23c49965ceab3
+                var client = new RestClient();
+                client.BaseUrl = new Uri("https://newsapi.org");
+                var request = new RestRequest("v1/articles", Method.GET);
+                //request.AddUrlSegment("API_KEY", key);
+                //request.AddUrlSegment("place", place);
+                request.AddParameter("source", Provider);
+                request.AddParameter("sortBy", "top");
+                request.AddParameter("apiKey", apiKey);
+                
+                IRestResponse response = client.Execute(request);
+                Debug.WriteLine("=======================================================");
+                Debug.WriteLine(response.Content.ToString());
+                Debug.WriteLine("=======================================================");
+
+                dynamic news = JsonConvert.DeserializeObject(response.Content.ToString());
+
+
+                //Debug.WriteLine((string)news["articles"]["0"]["title"]);
+                foreach (var n in news["articles"])
+                {
+                    Debug.WriteLine((string)n["title"]);
+                    _topNews.Add(new News((string)n["title"], (string)n["urlToImage"], (string)n["url"]));
+                }
+
             }
             catch
             {
@@ -80,7 +112,7 @@ namespace IHC
         {
             try
             {
-                Debug.WriteLine("================================ Get Weatherr");
+                //Debug.WriteLine("================================ Get Weatherr");
                 var client = new RestClient();
                 client.BaseUrl = new Uri("http://api.apixu.com");
                 var request = new RestRequest("v1/current.json", Method.GET);
@@ -89,8 +121,8 @@ namespace IHC
                 request.AddParameter("key", key);
                 request.AddParameter("q", Place);
                 IRestResponse response = client.Execute(request);
-                Debug.Write("=======================================================");
-                Debug.WriteLine(response.Content.ToString());
+                //Debug.Write("=======================================================");
+                //Debug.WriteLine(response.Content.ToString());
                 dynamic weather = JsonConvert.DeserializeObject(response.Content.ToString());
 
                 this.CityText.Text = weather["location"]["name"] + " , " + weather["location"]["country"];
@@ -100,7 +132,7 @@ namespace IHC
                 this.WindText.Text = "Wind : " + weather["current"]["wind_kph"] + " Km/h";
 
                 this.imageWeather.Source = new BitmapImage(new Uri("http:" + weather["current"]["condition"]["icon"]));
-                Debug.WriteLine("=================" + this.imageWeather.Source);
+                //Debug.WriteLine("=================" + this.imageWeather.Source);
                 //http://api.apixu.com/v1/current.json?key=<YOUR_API_KEY>&q=London
             }
             catch
@@ -263,6 +295,19 @@ namespace IHC
             }
         }
 
+        public string Provider
+        {
+            get
+            {
+                return provider;
+            }
+
+            set
+            {
+                provider = value;
+            }
+        }
+
         private void addTodo(object sender, RoutedEventArgs e)
         {
             _TodoList.Add(new Todo { Text = this.TodoText.Text });
@@ -343,6 +388,18 @@ namespace IHC
         private void allClick(object sender, MouseButtonEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void newsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(_topNews[newsListBox.SelectedIndex].URL);
+            e.Handled = true;
         }
     }
 }

@@ -37,7 +37,19 @@ namespace IHC
                 view.Place = city;
             }
             view.fetchWeather();
+
+            switch (chooseNews.SelectedIndex)
+            {
+                case 1: view.Provider = "google-news"; break;
+                case 2: view.Provider = "the-new-york-times"; break;
+                default: break;
+            }
+
+            view.fetchNews();
+
             this.NavigationService.Navigate(view);
+
+
         }
 
         private void Expander_Expanded_Email(object sender, RoutedEventArgs e)
