@@ -25,20 +25,21 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" 
-                                 Margin="0,80,0,0" Kind="AccountCircle" 
+                                 Margin="0,0,0,0" Kind="AccountCircle" 
                                  HorizontalAlignment="Center" 
                                  Height="150" Width="150"
                                  VerticalAlignment="Center"/>
         <TextBox x:Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                  Grid.Row="2" Grid.Column="1"
-                 Margin="0 20 0 0">
+                 Margin="0 0 0 0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Account" />
@@ -48,7 +49,7 @@
         </TextBox>
         <PasswordBox x:Name="PasswordBox1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                     Grid.Row="3" Grid.Column="1"
-                 Margin="0 20 0 0">
+                 Margin="0 0 0 0">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Key" />
@@ -78,7 +79,7 @@
         <materialDesign:Snackbar Message="hello 1" 
                 IsActive="False"
                 x:Name="Snack" 
-                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"               
+                Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"               
                 />
     </Grid>
 </Page>

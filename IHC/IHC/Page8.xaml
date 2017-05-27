@@ -24,83 +24,142 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
+        <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16" Height="64">
             <DockPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Back" Click="Button_Click"/>
+                    <Button Width="auto" Height="auto" Padding="0" Background="Transparent" BorderThickness="0" Click="Button_Click">
+                        <materialDesign:PackIcon x:Name="BackSettings" Kind="ArrowLeftDropCircleOutline"  Height="auto" Width="auto" />
+                    </Button>
                     <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="0" Grid.Row="0" Margin="20,155,0,0">
-            <materialDesign:PackIcon Kind="Flag" />
-            Language:
-        </TextBlock>
-        <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Margin="140,65,30,0">
-            <ComboBoxItem Content="English"/>
-        </ComboBox>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="0" Grid.Row="0" Margin="20,205,0,0">
-            <materialDesign:PackIcon Kind="Lightbulb" />
-            Light Mode:
-        </TextBlock>
-        <ToggleButton Style="{DynamicResource MaterialDesignSwitchDarkToggleButton}" Margin="-150,180,0,0"/>
-        
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="0" Grid.Row="1" Margin="20,5,0,0">
-            <materialDesign:PackIcon Kind="Email" />
-            Change Email Address:
-        </TextBlock>
-        <materialDesign:DialogHost Grid.Column="0" Grid.Row="1">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Orientation="Vertical" Margin="5 5 5 5">
-                    <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Email:</TextBlock>
-                    <TextBox Name="TextBox1" Margin="5 5 5 5"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{DynamicResource MaterialDesignRaisedDarkButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancelar</Button>
-                        <Button Style="{DynamicResource MaterialDesignRaisedAccentButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="Change_Email">Criar</Button>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Style="{DynamicResource MaterialDesignFlatButton}" Width="70" HorizontalAlignment="Right" Click="Button_Click_3">Save</Button>
+            <TextBlock  VerticalAlignment="Center" Grid.Row="0" Style="{StaticResource MaterialDesignDisplay1TextBlock}" Padding="10">Settings</TextBlock>
+
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <Border Background="{DynamicResource MaterialDesignDivider}" Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />
+
+                <Expander HorizontalAlignment="Stretch" Expanded="Expander_Expanded_Basic" Name="basicSettings"
+                          Header="Basic Settings">
+                    <StackPanel Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                            Margin="24,8,24,16">
+                        <TextBlock Text="In here you can adjust basic settings of your app" />
+                        <Grid Margin="0 25 0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <!--<materialDesign:PackIcon Kind="Flag" Width="20" Height="auto" Margin="0 10 0 10"/>-->
+                            <TextBlock Grid.Column="1" Style="{DynamicResource MaterialDesignBody1TextBlock }" VerticalAlignment="center">Language :</TextBlock>
+                            <ComboBox IsEnabled="False" Grid.Column="2" Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="center"  HorizontalAlignment="Left" Width="150">
+                                <ComboBoxItem Content="English"/>
+                                <ComboBoxItem Content="Portuguese"/>
+                            </ComboBox>
+                            <!--<materialDesign:PackIcon Kind="Lightbulb" Grid.Row="1" Width="20" Height="auto" Margin="0 10 0 10"/>-->
+                            <TextBlock Grid.Column="1" Grid.Row="1" Style="{DynamicResource MaterialDesignBody1TextBlock }" VerticalAlignment="Center">Color Mode :</TextBlock>
+                            <!--<ToggleButton Grid.Column="2" Grid.Row="1" Style="{DynamicResource MaterialDesignSwitchDarkToggleButton}" Margin="20 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
+                            <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
+                                <Button Width="69" Style="{DynamicResource MaterialDesignRaisedLightButton}" Margin="10 0 10 0" Click="Button_Click_1">
+                                    Light
+                                </Button>
+                                <Button Width="69" Margin="10 0 10 0" Click="Button_Click_2" Style="{DynamicResource MaterialDesignRaisedDarkButton}">
+                                    Dark
+                                </Button>
+
+                            </StackPanel>
+                            <!--<materialDesign:PackIcon Kind="Earth" Grid.Row="2" Width="20" Height="auto" Margin="0 10 0 10"/>-->
+                            <TextBlock Grid.Column="1" Grid.Row="2" Style="{DynamicResource MaterialDesignBody2TextBlock }" VerticalAlignment="Center" HorizontalAlignment="Left">Location :</TextBlock>
+                            <TextBox Name="cityBox" Grid.Row="2" Grid.Column="2" materialDesign:HintAssist.Hint="City" HorizontalAlignment="Left" VerticalAlignment="center" Width="150"
+Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </Grid>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Width="100" Margin="90,0,0,0" Content="Change"/>
-        </materialDesign:DialogHost>
-        
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="0" Grid.Row="1" Margin="20,55,0,0">
-            <materialDesign:PackIcon Kind="Account" />
-            Change Account's Name:
-        </TextBlock>
-        <materialDesign:DialogHost Grid.Column="0" Grid.Row="1">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Orientation="Vertical" Margin="5 5 5 5">
-                    <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Name:</TextBlock>
-                    <TextBox Name="TextBox2" Margin="5 5 5 5"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{DynamicResource MaterialDesignRaisedDarkButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancelar</Button>
-                        <Button Style="{DynamicResource MaterialDesignRaisedAccentButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="Change_Name">Criar</Button>
+                </Expander>
+                <Border Background="{DynamicResource MaterialDesignDivider}" Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />
+                <Expander HorizontalAlignment="Stretch" Expanded="Expander_Expanded_Calendar" Name="calendarSettings"
+                      Header="Calendar Settings">
+                    <StackPanel Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                            Margin="24,8,24,16">
+                        <TextBlock Text="Calendar" />
+                        <TextBlock Opacity=".68" Text="In here you can adjust you Calendar settings Like your default view over it and such"
+                               TextWrapping="Wrap"/>
+                        <TextBlock Opacity=".68" Text="Not implemented due to excessive complexity"
+                               TextWrapping="Wrap"/>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Width="100" Margin="90,52,0,0" Content="Change"/>
-        </materialDesign:DialogHost>
-        
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="0" Grid.Row="1" Margin="20,102,0,0">
-            <materialDesign:PackIcon Kind="Key" />
-            Change Account's Password:
-        </TextBlock>
-        <materialDesign:DialogHost Grid.Column="0" Grid.Row="1">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Orientation="Vertical" Margin="5 5 5 5">
-                    <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Margin="5 5 5 5">Password:</TextBlock>
-                    <TextBox Name="TextBox3" Margin="5 5 5 5"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{DynamicResource MaterialDesignRaisedDarkButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">Cancelar</Button>
-                        <Button Style="{DynamicResource MaterialDesignRaisedAccentButton }" Margin="5 5 5 5" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="Change_Password">Criar</Button>
+                </Expander>
+                <Border Background="{DynamicResource MaterialDesignDivider}" Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />
+                <Expander HorizontalAlignment="Stretch" Expanded="Expander_Expanded_ToDo" Name="todoSettings"
+                      Header="To Do List Settings">
+                    <StackPanel Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                            Margin="24,8,24,16">
+                        <TextBlock Text="Email" />
+                        <TextBlock Opacity=".68" Text="In here you can adjust you To do list settings like whe to erase the to dos and notification Settings"
+                               TextWrapping="Wrap"/>
+                        <TextBlock Opacity=".68" Text="Not implemented due to excessive complexity"
+                               TextWrapping="Wrap"/>
                     </StackPanel>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Width="100" Margin="90,100,0,0" Content="Change"/>
-        </materialDesign:DialogHost>
+                </Expander>
+                <Border Background="{DynamicResource MaterialDesignDivider}" Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />
+
+                <Expander HorizontalAlignment="Stretch" Expanded="Expander_Expanded_Schedule" Name="scheduleSettings"
+                      Header="Schedule Settings">
+                    <StackPanel Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                            Margin="24,8,24,16">
+                        <TextBlock Text="Schedule" />
+                        <TextBlock Opacity=".68" Text="In here you can adjust you schedule settings like adding new classes and edit current ones"
+                               TextWrapping="Wrap"/>
+                        <TextBlock Opacity=".68" Text="Not implemented due to excessive complexity"
+                               TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Expander>
+                <Border Background="{DynamicResource MaterialDesignDivider}" Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />
+
+                <Expander HorizontalAlignment="Stretch" Expanded="Expander_Expanded_Email" Name="mailSettings"
+                      Header="Email Settings">
+                    <StackPanel Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                            Margin="24,8,24,16">
+                        <TextBlock Text="Email" />
+                        <TextBlock Opacity=".68" Text="In here you can adjust you email settings Like POP3 server SMTP server and o"
+                               TextWrapping="Wrap"/>
+                        <TextBlock Opacity=".68" Text="Not implemented due to excessive complexity"
+                               TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </Grid>
+
+
+
+
+
+
+        <materialDesign:Snackbar Message="hello 1" 
+                IsActive="False"
+                x:Name="Snack" 
+                Grid.Column="0" Grid.Row="1" Height="0" Margin="539,0" Width="288"               
+                />
     </Grid>
 </Page>

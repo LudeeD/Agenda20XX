@@ -89,8 +89,8 @@ namespace IHC
 
     static public class Insert_user
     {
-        static public String username = "Utilizador1";
-        static public String email = "adminemail@mail.com";
-        static public String password = "Admin21";
+        static public String username = "user";
+        static public String email = "user@mail.com";
+        static public String password = "demo";
     }
 }

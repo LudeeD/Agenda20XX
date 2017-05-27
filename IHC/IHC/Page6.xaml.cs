@@ -13,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using RestSharp;
+using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace IHC
 {
@@ -31,12 +35,16 @@ namespace IHC
         private ObservableCollection<Class> _Schedule_Tue = new ObservableCollection<Class>();
         private ObservableCollection<Class> _Schedule_Fri = new ObservableCollection<Class>();
 
+        private string key = "95e3f8d41eae46909ce232325172505";
+        private string place = "Aveiro";
+
 
         public AX_TriView()
         {
             InitializeComponent();
             seedTodos();
             seedSchedule();
+
             todosListBox.ItemsSource = ListaToDos;
             scheduleListBoxMon.ItemsSource = _Schedule_Mon;
             scheduleListBoxThu.ItemsSource = _Schedule_Thu;
@@ -44,9 +52,69 @@ namespace IHC
             scheduleListBoxTue.ItemsSource = _Schedule_Tue;
             scheduleListBoxFri.ItemsSource = _Schedule_Fri;
 
+            DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+            this.timeText.Text = DateTime.Now.ToString("HH:mm");
+            this.dateText.Text = DateTime.Now.ToString("dd/MM/yy"); 
+            dispatcherTimer.Start();
 
+            fetchWeather();
+            //fetchNews();
+        }
 
-            this.DataContext = this;
+        public void fetchNews()
+        {
+            try
+            {
+                //https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=352daa3b9e104067acb23c49965ceab3
+            }
+            catch
+            {
+                //TODO SNACK a Dizer que não foi possível Ir buscar as Notcicias
+            }
+
+        }
+
+        public void fetchWeather()
+        {
+            try
+            {
+                Debug.WriteLine("================================ Get Weatherr");
+                var client = new RestClient();
+                client.BaseUrl = new Uri("http://api.apixu.com");
+                var request = new RestRequest("v1/current.json", Method.GET);
+                //request.AddUrlSegment("API_KEY", key);
+                //request.AddUrlSegment("place", place);
+                request.AddParameter("key", key);
+                request.AddParameter("q", Place);
+                IRestResponse response = client.Execute(request);
+                Debug.Write("=======================================================");
+                Debug.WriteLine(response.Content.ToString());
+                dynamic weather = JsonConvert.DeserializeObject(response.Content.ToString());
+
+                this.CityText.Text = weather["location"]["name"] + " , " + weather["location"]["country"];
+                this.TempText.Text = "Temperature : " + weather["current"]["temp_c"] + " C";
+                this.PrecText.Text = "Precipitation: " + weather["current"]["precip_mm"] + " nm";
+                this.HumiText.Text = "Humidity : " + weather["current"]["humidity"] + " %";
+                this.WindText.Text = "Wind : " + weather["current"]["wind_kph"] + " Km/h";
+
+                this.imageWeather.Source = new BitmapImage(new Uri("http:" + weather["current"]["condition"]["icon"]));
+                Debug.WriteLine("=================" + this.imageWeather.Source);
+                //http://api.apixu.com/v1/current.json?key=<YOUR_API_KEY>&q=London
+            }
+            catch
+            {
+                //TODO SNACK a Dizer que não foi possível Ir buscar o Tempo
+            }
+            
+
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            this.timeText.Text= DateTime.Now.ToString("HH:mm");
+            this.dateText.Text = DateTime.Now.ToString("dd/MM/yy");
         }
 
         private void seedTodos()
@@ -58,20 +126,22 @@ namespace IHC
 
         private void seedSchedule()
         {
-            _Schedule_Mon.Add(new IHC.Class("09:00", "10:00", "Base de Dados", "4.2.3"));
-            _Schedule_Mon.Add(new IHC.Class("10:00", "11:00", "Ihc", "4.2.2"));
-            _Schedule_Mon.Add(new IHC.Class("11:00", "10:00", "Arquitectura de Redes", "4.1.3"));
-            _Schedule_Mon.Add(new IHC.Class("12:00", "10:00", "Base de Dados Prática", "4.2.3"));
+            int day = (int)DateTime.Now.DayOfWeek - 1;
+            
+            if (day != -1 && day != 5)
+                this.ScheduleDay.SelectedIndex = day;
 
-            _Schedule_Tue.Add(new IHC.Class("13:00", "16:00", "Pei", "4.2.3"));
+            _Schedule_Mon.Add(new IHC.Class("11:00", "13:00", "Base de Dados T", "Anf IV"));
+            _Schedule_Mon.Add(new IHC.Class("16:00", "19:00", "Arquitetura de Redes P", "4.2.20"));
 
-            _Schedule_Wed.Add(new IHC.Class("09:00", "10:00", "IHC ", "4.2.3"));
-            _Schedule_Wed.Add(new IHC.Class("11:00", "12:00", "IHC Prática", "4.2.3"));
+            _Schedule_Tue.Add(new IHC.Class("11:00", "13:00", "Interacção Humano Computador T", "4.1.11"));
+            _Schedule_Tue.Add(new IHC.Class("14:00", "16:00", "Interacção Humano Computador P", "Anf V"));
+            _Schedule_Tue.Add(new IHC.Class("16:00", "17:00", "Arquitetura de Redes T", "Anf V"));
 
-            _Schedule_Thu.Add(new IHC.Class("13:00", "15:00", "Pei", "4.2.3"));
-            _Schedule_Thu.Add(new IHC.Class("15:00", "16:00", "Arquitectura de Redes", "4.2.3"));
-           
+            _Schedule_Wed.Add(new IHC.Class("09:30", "13:00", "Projecto Eng Informática", "Anf V"));
 
+            _Schedule_Thu.Add(new IHC.Class("14:00", "15:00", "Arquitetura de Redes T", "Anf V"));
+            _Schedule_Thu.Add(new IHC.Class("15:00", "16:00", "Base de Dados P", "4.2.8"));
         }
 
         private void ToggleButton_ClickSchedule(object sender, RoutedEventArgs e)
@@ -148,25 +218,24 @@ namespace IHC
 
         private void on_Calendar(object sender, RoutedEventArgs e)
         {
+            this.ToDo.Visibility = Visibility.Collapsed;
             this.Calendar.Visibility = Visibility.Visible;
-            this.Schedule.Visibility = Visibility.Collapsed;
         }
         private void on_Schedule(object sender, RoutedEventArgs e)
         {
+            this.News.Visibility = Visibility.Collapsed;
             this.Schedule.Visibility = Visibility.Visible;
-            this.Calendar.Visibility = Visibility.Collapsed;
 
         }
         private void on_Todo(object sender, RoutedEventArgs e)
         {
+            this.Calendar.Visibility = Visibility.Collapsed;
             this.ToDo.Visibility = Visibility.Visible;
-            this.News.Visibility = Visibility.Collapsed;
-
         }
         private void on_News(object sender, RoutedEventArgs e)
         {
             this.News.Visibility = Visibility.Visible;
-            this.ToDo.Visibility = Visibility.Collapsed;
+            this.Schedule.Visibility = Visibility.Collapsed;
 
         }
         private void on_Email(object sender, RoutedEventArgs e)
@@ -180,6 +249,19 @@ namespace IHC
         }
 
         public ObservableCollection<Todo> ListaToDos { get { return _TodoList; } }
+
+        public string Place
+        {
+            get
+            {
+                return place;
+            }
+
+            set
+            {
+                place = value;
+            }
+        }
 
         private void addTodo(object sender, RoutedEventArgs e)
         {
@@ -241,6 +323,26 @@ namespace IHC
         {
             AX_Settings settings = new AX_Settings();
             this.NavigationService.Navigate(settings);
+        }
+
+        private void dayClick(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void weekClick(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void monthClick(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void allClick(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

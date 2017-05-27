@@ -15,55 +15,140 @@
       TextOptions.TextRenderingMode="Auto"        
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}">
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
-            <DockPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Click="Back_Click" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="Back"/>
-                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
-                </StackPanel>
-            </DockPanel>
-        </materialDesign:ColorZone>
-        <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" 
-                                 Margin="0,-250,0,0" Kind="AccountCircle" 
+    <materialDesign:DialogHost Grid.Column="2" Grid.Row="1">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Margin="15 15 15 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Column="1" Grid.Row="1"
+            Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                            <materialDesign:PackIcon Kind="Email" />
+                            <TextBlock FontSize="16">Email</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+                <TextBox Grid.Column="1" Grid.Row="2"
+                Name="TextBox2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8" >
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                            <materialDesign:PackIcon Kind="Account" />
+                            <TextBlock FontSize="16">Username</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+                <PasswordBox Grid.Column="1" Grid.Row="3"
+                Name="PasswordBox1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 0 8">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                            <materialDesign:PackIcon Kind="Key" />
+                            <TextBlock FontSize="16">Password</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </PasswordBox>
+                <PasswordBox Grid.Column="1" Grid.Row="4"
+                Name="PasswordBox2" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0 0 0 8">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                            <materialDesign:PackIcon Kind="Key" />
+                            <TextBlock FontSize="16">Confirm Password</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </PasswordBox>
+                <Button Grid.Column="1" Grid.Row="5" Style="{StaticResource MaterialDesignRaisedDarkButton}"  Width="Auto" HorizontalAlignment="Left"
+                    ToolTip="Cancel account edit" Margin="30 0 0 0" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                    Cancel
+                </Button>
+                <Button Grid.Column="1" Grid.Row="5" Style="{StaticResource MaterialDesignRaisedAccentButton}"  Width="Auto" HorizontalAlignment="Right"
+                    ToolTip="Save Changes" Click="Button_Click_1" Margin="0 0 30 0"
+                        Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        >
+                    Save
+                </Button>
+                <materialDesign:Snackbar Message="hello 1" 
+                IsActive="False"
+                x:Name="Snack" 
+                Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"               
+                />
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16" Height="64">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="auto" Height="auto" Padding="0" Background="Transparent" BorderThickness="0" Click="Button_Click">
+                            <materialDesign:PackIcon x:Name="BackSettings" Kind="ArrowLeftDropCircleOutline"  Height="auto" Width="auto" />
+                        </Button>
+                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+            <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" 
+                                 Margin="0,-0,0,0" Kind="AccountCircle" 
                                  HorizontalAlignment="Center" 
                                  Height="150" Width="150"
                                  VerticalAlignment="Center"/>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="90,100,0,0">
+            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Account" />
                         <TextBlock FontSize="16">Username:</TextBlock>
             </StackPanel>
         </TextBlock>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="190,100,0,0">
+            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
-                <TextBlock FontSize="16" Text="{Binding Path=User}"/>
+                <TextBlock Name="userNameBlock" FontSize="16" Text="{Binding Path=User}"/>
             </StackPanel>
         </TextBlock>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="90,150,0,0">
+            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Email" />
                         <TextBlock FontSize="16">Email:</TextBlock>
             </StackPanel>
         </TextBlock>
-        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="1" Margin="190,150,0,0">
+            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock }" Grid.Column="1" Grid.Row="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
-                        <TextBlock FontSize="16"  Text="{Binding Path=Email}"/>
+                        <TextBlock Name="emailBlock" FontSize="16"  Text="{Binding Path=Email}"/>
             </StackPanel>
         </TextBlock>
-        <Button Click="Logout_Click" Margin="0,0,0,20" Style="{StaticResource MaterialDesignRaisedAccentButton}" Grid.Row="1" Grid.Column="1" Width="100" VerticalAlignment="Bottom">
-            Logout
-        </Button>
-    </Grid>
+            <Button Margin="0,30,0,10" Style="{StaticResource MaterialDesignRaisedLightButton}" Grid.Row="4" Grid.Column="1" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                    >
+                Edit User
+            </Button>
+            <Button Click="Settings_Click" Margin="0,0,0,10" Style="{StaticResource MaterialDesignRaisedButton}" Grid.Row="5" Grid.Column="1" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center">
+                Settings
+            </Button>
+            <Button Click="Logout_Click" Margin="0,0,0,10" Style="{StaticResource MaterialDesignRaisedDarkButton}" Grid.Row="6" Grid.Column="1" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center">
+                Logout
+            </Button>
+        </Grid>
+    </materialDesign:DialogHost>
 </Page>

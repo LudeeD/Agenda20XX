@@ -24,12 +24,28 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
+        <TextBlock Grid.Column="1" Grid.Row="1" Margin="0 0 0 8">
+            <materialDesign:Card Padding="10">
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap">
+                    Hi, Looks Like you forgot your password...
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                    Don´t Worry we´ll Email a brand new one to you so you can still use our app
+                    </TextBlock>
+                    <TextBlock Margin="0 10 0 0">
+                    Just fill in with the email you used for creating the account                  
+                    </TextBlock>
+                </StackPanel>
+            </materialDesign:Card>
+        </TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="TextBox1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 0 8">
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <materialDesign:PackIcon Kind="Email" />
@@ -37,11 +53,11 @@
                     </StackPanel>
                 </materialDesign:HintAssist.Hint>
             </TextBox>
-        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="-220 20 8 0" Width="Auto" HorizontalAlignment="Center"
+        <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="-220 20 8 0" Width="Auto" HorizontalAlignment="Center"
                     ToolTip="Cancel password's reset" Click="Cancel_Click">
             Cancel
         </Button>
-        <Button Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="130 20 8 0" Width="Auto" HorizontalAlignment="Center"
+        <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="130 20 8 0" Width="Auto" HorizontalAlignment="Center"
                     ToolTip="Send email with link to reset password" Click="Email_Click">
             Reset Password
         </Button>

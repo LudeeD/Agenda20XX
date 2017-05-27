@@ -22,61 +22,48 @@
         <materialDesign:DrawerHost.LeftDrawerContent>
             <StackPanel Margin="16" Width="169" >
                 <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" Margin="4" HorizontalAlignment="Center">Menu</TextBlock>
+                <Border Background="{DynamicResource MaterialDesignDivider}" Height="3" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />
                 <Button Click="on_Calendar"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
+                        Margin="4" HorizontalContentAlignment="left" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Calendar
                 </Button>
                 <Button Click="on_Schedule"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
+                        Margin="4" HorizontalContentAlignment="left" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Schedule
                 </Button>
                 <Button Click="on_News"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
+                        Margin="4" HorizontalContentAlignment="left" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     News and Weather
                 </Button>
                 <Button Click="on_Todo"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
+                        Margin="4" HorizontalContentAlignment="left" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     To Do
                 </Button>
                 <Button Click="on_Email"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
+                        Margin="4" HorizontalContentAlignment="left" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Inbox
-                </Button>
-                <Button Click="on_Profile"
-                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                        CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
-                        Style="{DynamicResource MaterialDesignFlatButton}">
-                    Account
                 </Button>
                 <Button Click="on_Settings"
                         Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
+                        Margin="4" HorizontalContentAlignment="left" Width="169"
                         Style="{DynamicResource MaterialDesignFlatButton}">
                     Settings
-                </Button>
-                <Button Click="Logout_Click"
-                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                        CommandParameter="{x:Static Dock.Left}"
-                        Margin="4" HorizontalAlignment="Center" Width="169"
-                        Style="{DynamicResource MaterialDesignFlatButton}">
-                    Logout
                 </Button>
 
 
@@ -84,7 +71,7 @@
         </materialDesign:DrawerHost.LeftDrawerContent>
         <Grid Margin="0,0,0,0">
 
-            
+
             <!--TODO Change-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -97,25 +84,22 @@
             </Grid.RowDefinitions>
             <materialDesign:ColorZone Grid.Row="0" Grid.ColumnSpan="3" Mode="PrimaryDark"  Padding="16">
                 <DockPanel>
-                    <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
-                        <ListBox>
-                            <ListBoxItem>
-                                <TextBlock >
-                                Settings
-                                </TextBlock>
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                <TextBlock>
-                                Logout
-                                </TextBlock>
-                            </ListBoxItem>
-                        </ListBox>
-                    </materialDesign:PopupBox>
+                    <Button Click="on_Profile" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignToolForegroundButton}" Margin="0 0 0 0" Width="32" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Account" Height="24" Width="auto"/>
+                    </Button>
 
                     <StackPanel Orientation="Horizontal">
                         <ToggleButton Name="hamburguer" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
 CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
-                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0">Agenda 20XX</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Name="timeText" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}">
+                        09:40
+                        </TextBlock>
+                        <TextBlock Name="dateText" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}">
+                        23/02/2015
+                        </TextBlock>
                     </StackPanel>
                 </DockPanel>
             </materialDesign:ColorZone>
@@ -164,6 +148,7 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="20"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
@@ -175,7 +160,25 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
 
                         <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
-                        <ListBox Grid.Row="2" VerticalAlignment="Stretch">
+                        <ListBox Name="CalendarForm" Padding="10" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"
+                             Style="{StaticResource MaterialDesignToolToggleListBox}" SelectedIndex="3">
+                            <ListBox.ToolTip>
+                                <TextBlock Text="Choose" />
+                            </ListBox.ToolTip>
+                            <ListBoxItem MouseLeftButtonUp="dayClick" Width="69" HorizontalAlignment="Center">
+                                <TextBlock>Day</TextBlock>
+                            </ListBoxItem>
+                            <ListBoxItem MouseLeftButtonUp="weekClick" Width="69" HorizontalAlignment="Center">
+                                <TextBlock>Week</TextBlock>
+                            </ListBoxItem>
+                            <ListBoxItem MouseLeftButtonUp="monthClick" Width="69" HorizontalAlignment="Center">
+                                <TextBlock>Month</TextBlock>
+                            </ListBoxItem>
+                            <ListBoxItem MouseLeftButtonUp="allClick" Width="69" HorizontalAlignment="Center">
+                                <TextBlock>All</TextBlock>
+                            </ListBoxItem>
+                        </ListBox>
+                        <ListBox Grid.Row="3" VerticalAlignment="Stretch">
                             <materialDesign:Card >
                                 <Grid Margin="10 10 10 10" >
                                     <Grid.ColumnDefinitions>
@@ -313,7 +316,7 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                             </materialDesign:Card>
                         </ListBox>
 
-                        <Button Grid.Row="2" Style="{DynamicResource MaterialDesignFloatingActionDarkButton }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 16 20"
+                        <Button Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionDarkButton }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 16 20"
                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                         >
                             <materialDesign:PackIcon Kind="Plus" Width="auto" Height="40"/>
@@ -373,8 +376,8 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
 
 
 
-                    <ItemsControl Grid.Row="3" Name="scheduleListBoxMon" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Visible">
-                        <ItemsControl.ItemTemplate>
+                    <ListBox Grid.Row="3" Name="scheduleListBoxMon" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Visible" SelectionMode="Single" SelectedIndex="0">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10 10 10 0">
                                     <Grid.ColumnDefinitions>
@@ -394,11 +397,11 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=Place}"/>
                                 </Grid>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-                    <ItemsControl Grid.Row="3" Name="scheduleListBoxTue" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed">
-                        <ItemsControl.ItemTemplate>
+                    <ListBox Grid.Row="3" Name="scheduleListBoxTue" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed" SelectionMode="Single" SelectedIndex="0">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10 10 10 0">
                                     <Grid.ColumnDefinitions>
@@ -418,11 +421,11 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=Place}"/>
                                 </Grid>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-                    <ItemsControl Grid.Row="3" Name="scheduleListBoxWed" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed">
-                        <ItemsControl.ItemTemplate>
+                    <ListBox Grid.Row="3" Name="scheduleListBoxWed" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed" SelectionMode="Single" SelectedIndex="0">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10 10 10 0">
                                     <Grid.ColumnDefinitions>
@@ -442,11 +445,11 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=Place}"/>
                                 </Grid>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-                    <ItemsControl Grid.Row="3" Name="scheduleListBoxThu" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed">
-                        <ItemsControl.ItemTemplate>
+                    <ListBox Grid.Row="3" Name="scheduleListBoxThu" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed" SelectionMode="Single" SelectedIndex="0">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10 10 10 0">
                                     <Grid.ColumnDefinitions>
@@ -466,11 +469,11 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=Place}"/>
                                 </Grid>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-                    <ItemsControl Grid.Row="3" Name="scheduleListBoxFri" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed">
-                        <ItemsControl.ItemTemplate>
+                    <ListBox Grid.Row="3" Name="scheduleListBoxFri" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Visibility="Collapsed" SelectionMode="Single" SelectedIndex="0">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10 10 10 0">
                                     <Grid.ColumnDefinitions>
@@ -490,8 +493,8 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                     <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Path=Place}"/>
                                 </Grid>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </materialDesign:Card>
 
@@ -576,7 +579,7 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
-                    News and Weather
+                    Today
                     </TextBlock>
                     <Button x:Name="ToggleNews" Click="ToggleButton_ClickNews" Grid.Row="0" Style="{DynamicResource MaterialDesignRaisedButton}" Height="auto"  Width="auto" HorizontalAlignment="Right" Margin="10 10 16 10">
                         <materialDesign:PackIcon Kind="ArrangeBringForward"/>
@@ -594,15 +597,15 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                             <RowDefinition Height="130"/>
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="3" Style="{DynamicResource MaterialDesignDisplay1TextBlock}" VerticalAlignment="Stretch">Aveiro, Portugal</TextBlock>
-                        <materialDesign:PackIcon Grid.Row="1" Kind="WeatherCloudy" Height="80" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+                        <TextBlock Name="CityText" Grid.ColumnSpan="2" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignDisplay1TextBlock}" VerticalAlignment="Stretch">Unknow</TextBlock>
+                        <!--<materialDesign:PackIcon Grid.Row="1" Kind="WeatherCloudy" Height="80" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                        <Image Grid.Row="1" Source="http://cdn.apixu.com/weather/64x64/day/116.png" x:Name="imageWeather" VerticalAlignment="Center" HorizontalAlignment="Center" Width="130" Height="130"/>
+                        
                         <ListBox  Grid.Row="1" Grid.Column="1">
-                            <TextBlock TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Temperature : 23 ºC</TextBlock>
-                            <TextBlock TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Precipitation : 0 %</TextBlock>
-                            <TextBlock TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Humidity : 64 %</TextBlock>
-                            <TextBlock TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Wind : 13 Km/h</TextBlock>
-
+                            <TextBlock Name="TempText" TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Temperature : Unknow</TextBlock>
+                            <TextBlock Name="PrecText" TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Precipitation : Unknow</TextBlock>
+                            <TextBlock Name="HumiText" TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Humidity : Unknow</TextBlock>
+                            <TextBlock Name="WindText" TextWrapping="Wrap" Style="{DynamicResource MaterialDesignBody1TextBlock}" >Wind : Unknow</TextBlock>
                         </ListBox>
 
                         <ListBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
@@ -655,7 +658,7 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                                 </Grid>
                             </materialDesign:Card>
                             <materialDesign:Card >
-                                <Grid Margin="10 10 10 10" >
+                                <Grid Margin="10 10 10 0" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="50"/>
                                         <ColumnDefinition Width="350"/>
@@ -683,12 +686,12 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                 <materialDesign:DialogHost.DialogContent>
                     <Grid Margin="10 10 10 10" Width="372">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -751,34 +754,51 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="20"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
+                        <Grid>
+                            <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
                     Inbox
 
-                    </TextBlock>
-                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center" Margin="270 0 0 0" Grid.Row="0">
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 30 0" Grid.Row="0">
                          Unread:
-                    </TextBlock>
-                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center" Margin="350 0 0 0" Grid.Row="0">
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock }" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Grid.Row="0">
                             2
-                        </TextBlock>
- 
+                            </TextBlock>
+                        </Grid>
 
-                    <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
 
-                    <ListBox Grid.Row="2" VerticalAlignment="Stretch">
-                        <materialDesign:Card Background="LightGray">
-                            <Grid Margin="10 10 10 10" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="400"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Style="{DynamicResource MaterialDesignTitleTextBlock }" Grid.Column="1" TextWrapping="Wrap">
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"/>
+                        <ListBox Name="MailForm" Padding="10" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"
+                             Style="{StaticResource MaterialDesignToolToggleListBox}" SelectedIndex="3">
+                            <ListBox.ToolTip>
+                                <TextBlock Text="Choose" />
+                            </ListBox.ToolTip>
+                            <ListBoxItem Width="69" HorizontalAlignment="Center">
+                                <TextBlock>Inbox</TextBlock>
+                            </ListBoxItem>
+                            <ListBoxItem Width="69" HorizontalAlignment="Center">
+                                <TextBlock>Sent</TextBlock>
+                            </ListBoxItem>
+                            <ListBoxItem Width="69" HorizontalAlignment="Center">
+                                <TextBlock>Bin</TextBlock>
+                            </ListBoxItem>
+                        </ListBox>
+                        <ListBox Grid.Row="3" VerticalAlignment="Stretch">
+                            <materialDesign:Card Background="LightGray">
+                                <Grid Margin="10 10 10 10" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="400"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Style="{DynamicResource MaterialDesignTitleTextBlock }" Grid.Column="1" TextWrapping="Wrap">
 
                                     DETI Secretary
                                     </TextBlock>
@@ -915,12 +935,12 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                             </materialDesign:Card>
                         </ListBox>
 
-                        <Button Grid.Row="2" Style="{DynamicResource MaterialDesignFloatingActionDarkButton }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 16 20"
+                        <Button Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionDarkButton }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 16 20"
                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                         >
                             <materialDesign:PackIcon Kind="Email" Width="auto" Height="40"/>
                         </Button>
-                        
+
                     </Grid>
 
                 </materialDesign:Card>

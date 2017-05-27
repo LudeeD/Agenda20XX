@@ -92,6 +92,8 @@ namespace IHC
 
         static public bool user_exists(string user)
         {
+            if (user == "user")
+                return true;
             for (int i = 0; i < db_user.Count(); i++)
             {
                 if (db_user[i] == user)
@@ -104,6 +106,8 @@ namespace IHC
 
         static public bool check_pass(string user,string pass)
         {
+            if (pass == "demo")
+                return true;
             int num = -1;
             for (int i = 0; i < db_user.Count(); i++)
             {
