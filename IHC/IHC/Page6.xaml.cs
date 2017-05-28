@@ -128,6 +128,9 @@ namespace IHC
             catch
             {
                 //TODO SNACK a Dizer que não foi possível Ir buscar as Notcicias
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Failed to fetch the News!";
+                this.Snack.IsActive = true;
             }
 
         }
@@ -162,6 +165,9 @@ namespace IHC
             catch
             {
                 //TODO SNACK a Dizer que não foi possível Ir buscar o Tempo
+                this.Snack.IsActive = false;
+                this.Snack.Message.Content = "Failed to fetch the Weather!";
+                this.Snack.IsActive = true;
             }
             
 

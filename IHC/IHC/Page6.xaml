@@ -145,7 +145,6 @@ CommandParameter="{x:Static Dock.Left}" MouseLeave="ToggleButton_MouseLeave"/>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="20"/>
-                            <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Style="{DynamicResource MaterialDesignDisplay1TextBlock }" VerticalAlignment="Center"  Margin="16 0 0 0" Grid.Row="0">
